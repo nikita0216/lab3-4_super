@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Паровой терминал доступа</title>
+    <style>
+        /* Основные стимпанк стили */
+        .steampunk-panel {
+            background: linear-gradient(to bottom, #3a2c28, #1a1a1a);
+            border: 3px solid #8B4513 !important;
+            border-radius: 0 !important;
+            box-shadow: 0 0 15px #8B4513, inset 0 0 10px rgba(139, 69, 19, 0.5);
+            color: #d4af37 !important;
+            font-family: 'Courier New', monospace !important;
+        }
+
+        .steampunk-panel .ui-panel-titlebar {
+            background: #1a1a1a !important;
+            border-bottom: 2px solid #8B4513 !important;
+            color: #d4af37 !important;
+            font-size: 1.2em !important;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .steampunk-input {
+            background: #2a2a2a !important;
+            border: 2px solid #8B4513 !important;
+            color: #d4af37 !important;
+            font-family: 'Courier New', monospace !important;
+            margin-bottom: 10px !important;
+        }
+
+        .steampunk-button {
+            background: linear-gradient(to bottom, #8B4513, #5a2c0d) !important;
+            border: 2px solid #d4af37 !important;
+            color: #d4af37 !important;
+            font-family: 'Courier New', monospace !important;
+            font-weight: bold !important;
+            text-shadow: 1px 1px 1px #000;
+            transition: all 0.3s;
+        }
+
+        .steampunk-button:hover {
+            background: linear-gradient(to bottom, #9B5513, #6a3c1d) !important;
+            box-shadow: 0 0 10px #d4af37;
+        }
+
+        .steampunk-link {
+            color: #8B4513 !important;
+            font-family: 'Courier New', monospace !important;
+            text-decoration: none !important;
+            border-bottom: 1px dashed #8B4513;
+            transition: all 0.3s;
+        }
+
+        .steampunk-link:hover {
+            color: #d4af37 !important;
+            border-bottom: 1px dashed #d4af37;
+        }
+
+        /* Стили для фона */
+        body {
+            /*background: url('ZanoVo.jpg') no-repeat center center fixed;*/
+            height: 800px;
+            background-size: cover;
+            padding-top: 50px;
+        }
+
+        /* Затемнение фона для лучшей читаемости */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .ui-messages {
+            font-family: 'Courier New', monospace !important;
+            background: rgba(26, 26, 26, 0.8) !important;
+            border: 1px solid #8B4513 !important;
+            color: #d4af37 !important;
+        }
+
+        /* Контейнер для центрирования формы */
+        .form-container {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</h:head>
+<h:body>
+    <!-- Затемнение фона -->
+    <div class="background-overlay"></div>
+
+    <div class="form-container">
+        <h:form>
+            <p:panel header="🔧 ПАРОВОЙ ДОСТУП 🔧" styleClass="steampunk-panel" style="max-width:400px; margin:auto;">
+                <p:messages autoUpdate="true" />
+
+                <p:inputText id="name" value="#{loginBean.name}" label="Идентификатор механика"
+                             styleClass="steampunk-input" required="true"/>
+
+                <p:password id="password" value="#{loginBean.password}" label="Паровой ключ"
+                            styleClass="steampunk-input" required="true" feedback="false"/>
+
+                <p:commandButton value="АКТИВИРОВАТЬ" action="#{loginBean.login}" update="@form"
+                                 styleClass="steampunk-button" icon="ui-icon-gear"/>
+            </p:panel>
+
+            <div style="text-align:center; margin-top:20px; color:#d4af37; font-family:'Courier New', monospace;">
+                <h:outputText value="Новый в гильдии механиков? " />
+                <h:link value="ЗАРЕГИСТРИРОВАТЬСЯ" outcome="register" styleClass="steampunk-link"/>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>

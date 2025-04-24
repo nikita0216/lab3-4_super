@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Admin Panel</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h2>Добро пожаловать, <h:outputText value="#{welcomeBean.username}" /></h2>
+
+        <h3>Список заказов</h3>
+
+        <p:dataTable value="#{welcomeBean.orderList}" var="order" border="1" stripedRows="true">
+            <p:column headerText="ID">
+                <h:outputText value="#{order.id}" />
+            </p:column>
+            <p:column headerText="Товар">
+                <h:outputText value="#{order.productName}" />
+            </p:column>
+            <p:column headerText="Количество">
+                <h:outputText value="#{order.quantity}" />
+            </p:column>
+            <p:column headerText="Итоговая цена">
+                <h:outputText value="#{order.totalPrice}" />
+            </p:column>
+        </p:dataTable>
+
+        <br/>
+        <p:commandButton value="Выйти" action="#{loginBean.logout}" icon="pi pi-sign-out" />
+    </h:form>
+</h:body>
+</html>
